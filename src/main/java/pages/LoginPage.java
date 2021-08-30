@@ -10,7 +10,7 @@ public class LoginPage extends BasePage{
     //Locators
     private final By emailField = By.cssSelector("li.username input#username");
     private final By passwordField = By.cssSelector("li.password input#password");
-    private final By btnSubmit = By.cssSelector("input[type='submit']");
+    private final By loginButton = By.cssSelector("p.form-actions input[type='submit']");
 
     //Elements
     private WebElement emailFieldElement() {
@@ -21,8 +21,8 @@ public class LoginPage extends BasePage{
         return Constants.WEBDRIVER.findElement(passwordField);
     }
 
-    private WebElement btnLoginElement() {
-        return Constants.WEBDRIVER.findElement(btnSubmit);
+    private WebElement loginButtonElement() {
+        return Constants.WEBDRIVER.findElement(loginButton);
     }
 
     //Methods
@@ -32,6 +32,6 @@ public class LoginPage extends BasePage{
         emailFieldElement().sendKeys(account.getEmail());
         passwordFieldElement().clear();
         passwordFieldElement().sendKeys(account.getPassword());
-        btnLoginElement().click();
+        loginButtonElement().click();
     }
 }

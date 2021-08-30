@@ -7,27 +7,27 @@ import org.openqa.selenium.WebElement;
 
 public class BasePage {
     //Locates
-    private final By greeting = By.cssSelector("div.account > strong");
+    private final By greetingMsg = By.cssSelector("div.account > strong");
     private final By welcomeMsg = By.cssSelector("div#content h1[align='center']");
-    private final By tabLogin = By.cssSelector("li a[href='/Account/Login.cshtml']");
+    private final By loginTab = By.cssSelector("li a[href='/Account/Login.cshtml']");
 
     //Elements
-    private WebElement greetingElement() {
-        return Constants.WEBDRIVER.findElement(greeting);
+    private WebElement greetingMsgElement() {
+        return Constants.WEBDRIVER.findElement(greetingMsg);
     }
 
     private WebElement welcomeMsgElement() {
         return Constants.WEBDRIVER.findElement(welcomeMsg);
     }
 
-    private WebElement tabLoginElement() {
-        return Constants.WEBDRIVER.findElement(tabLogin);
+    private WebElement loginTabElement() {
+        return Constants.WEBDRIVER.findElement(loginTab);
     }
 
     //Methods
-    public String getGreeting() {
-        Wait.untilElementVisible(greeting, Constants.TIME_WAIT);
-        return greetingElement().getText();
+    public String getGreetingMsg() {
+        Wait.untilElementVisible(greetingMsg, Constants.TIME_WAIT);
+        return greetingMsgElement().getText();
     }
 
     public String getWelcomeMsg() {
@@ -36,6 +36,6 @@ public class BasePage {
     }
 
     public void goToLoginPage() {
-        tabLoginElement().click();
+        loginTabElement().click();
     }
 }

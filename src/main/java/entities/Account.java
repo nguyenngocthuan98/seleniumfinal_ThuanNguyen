@@ -12,6 +12,6 @@ import lombok.Setter;
 public class Account {
     private String email;
     private String password;
-    private String re_password;
+    private String rePassword;
     private String pid;
 }
