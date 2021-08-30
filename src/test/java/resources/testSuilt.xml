@@ -3,7 +3,7 @@
 <suite name="test-suite">
     <test name="Test in Chrome">
         <classes>
-<!--            <class name="tests."/>-->
+            <class name="tests.TC01_LoginTest"/>
         </classes>
     </test>
 </suite>
