@@ -20,6 +20,7 @@ public class TC01_LoginTest extends BaseTests {
         account.setEmail(Constants.EMAIL);
         account.setPassword(Constants.PASSWORD);
 
+        LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
 
         LogHelper.logInfo("Compare Greeting message");
