@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTests {
     @BeforeMethod
     public void beforeMethod() {
-        LogHelper.info("Before method");
+        LogHelper.logInfo("Before method");
         WebDriverManager.chromedriver().setup();
         Constants.WEBDRIVER = new ChromeDriver();
         Constants.WEBDRIVER.get(Constants.BASE_URL);
@@ -18,7 +18,7 @@ public class BaseTests {
 
     @AfterMethod
     public void afterMethod() {
-        LogHelper.info("After method");
+        LogHelper.logInfo("After method");
         Constants.WEBDRIVER.quit();
     }
 }

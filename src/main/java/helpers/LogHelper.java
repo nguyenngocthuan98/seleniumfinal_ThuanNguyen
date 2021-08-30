@@ -1,7 +1,7 @@
 package helpers;
 
 public class LogHelper {
-    public static void info(String message){
+    public static void logInfo(String message) {
         System.out.println(message);
     }
 }
