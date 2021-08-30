@@ -23,10 +23,10 @@ public class TC02_LoginBlankUsername extends BaseTests {
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
 
-        LogHelper.logInfo("Compare username error message");
+        LogHelper.logInfo("Check username error message");
         Assert.assertEquals(loginPage.getEmailErrorMessage(), "You must specify a username.",
                 "Username error message doesn't display as expected.");
-        LogHelper.logInfo("Compare login form error message");
+        LogHelper.logInfo("Check login form error message");
         Assert.assertEquals(loginPage.getTopErrorMessage(),
                 "There was a problem with your login and/or errors exist in your form.", 
                 "Login form error message doesn't display as expected.");

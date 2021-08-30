@@ -23,10 +23,10 @@ public class TC01_LoginTest extends BaseTests {
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
 
-        LogHelper.logInfo("Compare Greeting message");
+        LogHelper.logInfo("Check greeting message");
         Assert.assertEquals("Welcome " + account.getEmail(), loginPage.getGreetingMsg(),
                 "Greeting doesn't display as expected.");
-        LogHelper.logInfo("Compare Welcome message");
+        LogHelper.logInfo("Check welcome message");
         Assert.assertEquals("Welcome to Safe Railway", loginPage.getWelcomeMsg(),
                 "Welcome message doesn't display as expected.");
     }
