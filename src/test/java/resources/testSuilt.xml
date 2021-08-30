@@ -4,6 +4,7 @@
     <test name="Test in Chrome">
         <classes>
             <class name="tests.TC01_LoginTest"/>
+            <class name="tests.TC02_LoginBlankUsername"/>
         </classes>
     </test>
 </suite>
