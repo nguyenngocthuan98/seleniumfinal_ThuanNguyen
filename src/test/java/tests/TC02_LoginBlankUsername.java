@@ -11,7 +11,6 @@ import pages.LoginPage;
 public class TC02_LoginBlankUsername extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
     private final Account account = new Account();
-    private final String password = DataHelper.getRandomPassword();
 
     @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
@@ -20,7 +19,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
 
         LogHelper.logInfo("Set Username is blank and valid Password value for Account object");
         account.setEmail("");
-        account.setPassword(password);
+        account.setPassword(Constants.PASSWORD);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
