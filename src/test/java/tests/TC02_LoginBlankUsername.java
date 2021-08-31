@@ -11,7 +11,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
     private final Account account = new Account();
 
-    @Test(testName = "User can't login with blank \"Username\" text box")
+    @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
         LogHelper.logInfo("Go to Login page");
         loginPage.goToLoginPage();
