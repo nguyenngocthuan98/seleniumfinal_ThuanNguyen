@@ -2,6 +2,7 @@ package tests;
 
 import entities.Account;
 import helpers.Constants;
+import helpers.DataHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ import pages.LoginPage;
 public class TC02_LoginBlankUsername extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
     private final Account account = new Account();
+    private final String password = DataHelper.getRandomPassword();
 
     @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
@@ -18,7 +20,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
 
         LogHelper.logInfo("Set Username is blank and valid Password value for Account object");
         account.setEmail("");
-        account.setPassword(Constants.PASSWORD);
+        account.setPassword(password);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
@@ -27,7 +29,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
         Assert.assertEquals(loginPage.getEmailErrorMessage(), "You must specify a username.",
                 "Username error message doesn't display as expected.");
         LogHelper.logInfo("Check login form error message");
-        Assert.assertEquals(loginPage.getLoginFormMessage(),
+        Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
                 "There was a problem with your login and/or errors exist in your form.", 
                 "Login form error message doesn't display as expected.");
     }

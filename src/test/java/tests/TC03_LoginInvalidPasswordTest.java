@@ -2,6 +2,7 @@ package tests;
 
 import entities.Account;
 import helpers.Constants;
+import helpers.DataHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -24,7 +25,7 @@ public class TC03_LoginInvalidPasswordTest extends BaseTests{
         loginPage.login(account);
 
         LogHelper.logInfo("Check login form error message");
-        Assert.assertEquals(loginPage.getLoginFormMessage(),
+        Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
                 "There was a problem with your login and/or errors exist in your form.",
                 "Login form error message doesn't display as expected.");
     }
