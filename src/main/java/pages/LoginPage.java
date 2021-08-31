@@ -11,6 +11,8 @@ public class LoginPage extends BasePage {
     private final By emailField = By.id("username");
     private final By passwordField = By.id("password");
     private final By loginButton = By.cssSelector("p.form-actions input[type='submit']");
+    private final By topErrorMsg = By.cssSelector("p[class='message error LoginForm']");
+    private final By emailErrorMsg = By.cssSelector("li.username label.validation-error");
 
     //Elements
     private WebElement emailFieldElement() {
@@ -25,7 +27,23 @@ public class LoginPage extends BasePage {
         return Constants.WEBDRIVER.findElement(loginButton);
     }
 
+    private WebElement topErrorMsgElement() {
+        return Constants.WEBDRIVER.findElement(topErrorMsg);
+    }
+
+    private WebElement emailErrorMsgElement() {
+        return Constants.WEBDRIVER.findElement(emailErrorMsg);
+    }
+
     //Methods
+    public String getTopErrorMessage() {
+        return topErrorMsgElement().getText();
+    }
+
+    public String getEmailErrorMessage() {
+        return emailErrorMsgElement().getText();
+    }
+
     public void login(Account account) {
         ElementHelper.scrollTo(emailFieldElement());
         emailFieldElement().clear();
