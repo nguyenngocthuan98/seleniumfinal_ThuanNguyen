@@ -2,7 +2,6 @@ package tests;
 
 import entities.Account;
 import helpers.Constants;
-import helpers.DataHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +20,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
         account.setEmail("");
         account.setPassword(Constants.PASSWORD);
 
-        LogHelper.logInfo("Login with valid account");
+        LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
 
         LogHelper.logInfo("Check username error message");
@@ -29,7 +28,7 @@ public class TC02_LoginBlankUsername extends BaseTests {
                 "Username error message doesn't display as expected.");
         LogHelper.logInfo("Check login form error message");
         Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
-                "There was a problem with your login and/or errors exist in your form.", 
+                "There was a problem with your login and/or errors exist in your form.",
                 "Login form error message doesn't display as expected.");
     }
 }

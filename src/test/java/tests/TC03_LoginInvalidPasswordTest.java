@@ -2,13 +2,12 @@ package tests;
 
 import entities.Account;
 import helpers.Constants;
-import helpers.DataHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-public class TC03_LoginInvalidPasswordTest extends BaseTests{
+public class TC03_LoginInvalidPasswordTest extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
     private final Account account = new Account();
 
@@ -21,7 +20,7 @@ public class TC03_LoginInvalidPasswordTest extends BaseTests{
         account.setEmail(Constants.EMAIL);
         account.setPassword("this_is_wrong_password");
 
-        LogHelper.logInfo("Login with valid account");
+        LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
 
         LogHelper.logInfo("Check login form error message");
