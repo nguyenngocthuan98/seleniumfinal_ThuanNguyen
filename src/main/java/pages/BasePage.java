@@ -10,6 +10,8 @@ public class BasePage {
     private final By greetingMsg = By.cssSelector("div.account > strong");
     private final By welcomeMsg = By.cssSelector("div#content h1[align='center']");
     private final By loginTab = By.cssSelector("li a[href='/Account/Login.cshtml']");
+    private final By bookTicketTab = By.cssSelector("li a[href='/Page/BookTicketPage.cshtml']");
+    private final By pageNameLabel = By.cssSelector("div#content h1[align='center']");
 
     //Elements
     private WebElement greetingMsgElement() {
@@ -22,6 +24,14 @@ public class BasePage {
 
     private WebElement loginTabElement() {
         return Constants.WEBDRIVER.findElement(loginTab);
+    }
+
+    private WebElement bookTicketTabElement() {
+        return Constants.WEBDRIVER.findElement(bookTicketTab);
+    }
+
+    private WebElement pageNameLabelElement() {
+        return Constants.WEBDRIVER.findElement(pageNameLabel);
     }
 
     //Methods
@@ -37,5 +47,14 @@ public class BasePage {
 
     public void goToLoginPage() {
         loginTabElement().click();
+    }
+
+    public void goToBookTicketPage() {
+        bookTicketTabElement().click();
+    }
+
+    public String getPageNameLabel() {
+        Wait.untilElementVisible(pageNameLabel, Constants.TIME_WAIT);
+        return pageNameLabelElement().getText();
     }
 }
