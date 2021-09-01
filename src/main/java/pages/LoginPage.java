@@ -3,6 +3,7 @@ package pages;
 import entities.Account;
 import helpers.Constants;
 import helpers.ElementHelper;
+import helpers.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -51,5 +52,18 @@ public class LoginPage extends BasePage {
         passwordFieldElement().clear();
         passwordFieldElement().sendKeys(account.getPassword());
         loginButtonElement().click();
+    }
+
+    public void loginSeveralTimes(Account account, int timesNumber) {
+        ElementHelper.scrollTo(emailFieldElement());
+        emailFieldElement().clear();
+        emailFieldElement().sendKeys(account.getEmail());
+        for (int i = 1; i <= timesNumber; i++) {
+            Wait.untilElementVisible(passwordField, Constants.TIME_WAIT);
+            ElementHelper.scrollTo(passwordFieldElement());
+            passwordFieldElement().clear();
+            passwordFieldElement().sendKeys(account.getPassword());
+            loginButtonElement().click();
+        }
     }
 }
