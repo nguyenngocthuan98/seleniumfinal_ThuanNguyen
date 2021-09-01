@@ -10,7 +10,6 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
-    Account account;
 
     @BeforeMethod
     public void preConditions() {
@@ -22,7 +21,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can log into Railway with valid username and password")
     public void tc01_LoginValidAccountTest() {
         LogHelper.logInfo("Set Email and Password values for Account object");
-        new Account(Constants.EMAIL, Constants.PASSWORD);
+        Account account = new Account(Constants.EMAIL, Constants.PASSWORD);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
@@ -38,7 +37,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
         LogHelper.logInfo("Set Username is blank and valid Password value for Account object");
-        new Account("", Constants.PASSWORD);
+        Account account = new Account("", Constants.PASSWORD);
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -55,7 +54,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can not log into Railway with invalid password")
     public void tc03_LoginInvalidPasswordTest() {
         LogHelper.logInfo("Set Username value and invalid Password value for Account object");
-        new Account(Constants.EMAIL, "this_is_wrong_password");
+        Account account = new Account(Constants.EMAIL, "this_is_wrong_password");
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -71,7 +70,7 @@ public class LoginTests extends BaseTests {
         int numberOfTimesForWarningMsg = 4;
 
         LogHelper.logInfo("Set Username value and wrong Password value for Account object");
-        new Account(Constants.EMAIL, "this_is_wrong_password");
+        Account account = new Account(Constants.EMAIL, "this_is_wrong_password");
 
         LogHelper.logInfo("Login with wrong password several times util warning message appear");
         loginPage.loginSeveralTimes(account, numberOfTimesForWarningMsg);
@@ -86,7 +85,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "Additional pages display once user logged in")
     public void tc06_AdditionalPagesUponLoginTest() {
         LogHelper.logInfo("Set Email and Password values for Account object");
-        new Account(Constants.EMAIL, Constants.PASSWORD);
+        Account account = new Account(Constants.EMAIL, Constants.PASSWORD);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
