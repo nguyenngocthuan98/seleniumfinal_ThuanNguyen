@@ -71,7 +71,7 @@ public class LoginTests extends BaseTests {
 
     @Test(testName = "System shows message when user enters wrong password several times.")
     public void tc05_WrongPasswordSeveralTimesTest() {
-        int limitedNumberOfTimes = 5;
+        int numberOfTimesForWarningMsg = 4;
 
         LogHelper.logInfo("Go to Login page");
         loginPage.goToLoginPage();
@@ -81,7 +81,7 @@ public class LoginTests extends BaseTests {
         account.setPassword("this_is_wrong_password");
 
         LogHelper.logInfo("Login with wrong password several times util warning message appear");
-        loginPage.loginWrongPasswordSeveralTimes(account, limitedNumberOfTimes);
+        loginPage.loginSeveralTimes(account, numberOfTimesForWarningMsg);
 
         LogHelper.logInfo("Check login warning message");
         Assert.assertEquals(loginPage.getLoginFormErrorMessage(),

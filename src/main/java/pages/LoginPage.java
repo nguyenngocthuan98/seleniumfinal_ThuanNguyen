@@ -54,11 +54,11 @@ public class LoginPage extends BasePage {
         loginButtonElement().click();
     }
 
-    public void loginWrongPasswordSeveralTimes(Account account, int timesNumber) {
+    public void loginSeveralTimes(Account account, int timesNumber) {
         ElementHelper.scrollTo(emailFieldElement());
         emailFieldElement().clear();
         emailFieldElement().sendKeys(account.getEmail());
-        for (int i = 1; i < timesNumber; i++) {
+        for (int i = 1; i <= timesNumber; i++) {
             Wait.untilElementVisible(passwordField, Constants.TIME_WAIT);
             ElementHelper.scrollTo(passwordFieldElement());
             passwordFieldElement().clear();
