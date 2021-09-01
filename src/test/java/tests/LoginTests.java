@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-public class LoginPageTests extends BaseTests {
+public class LoginTests extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
     private final Account account = new Account();
 

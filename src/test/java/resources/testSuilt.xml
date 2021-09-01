@@ -3,7 +3,7 @@
 <suite name="test-suite">
     <test name="Test in Chrome">
         <classes>
-            <class name="tests.LoginPageTests"/>
+            <class name="tests.LoginTests"/>
         </classes>
     </test>
 </suite>
