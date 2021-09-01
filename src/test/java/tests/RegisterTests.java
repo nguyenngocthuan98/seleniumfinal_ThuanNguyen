@@ -10,7 +10,7 @@ import pages.RegisterPage;
 public class RegisterTests extends BaseTests {
     private final RegisterPage registerPage = new RegisterPage();
     private final String email = DataHelper.getRandomEmail();
-    private final String password = DataHelper.getRandomPassword();
+    private final String password = "validPassword";
     private final String pid = DataHelper.getRandomNumber();
 
     @Test(testName = "User can create new account")
