@@ -1,6 +1,7 @@
 package pages;
 
 import helpers.Constants;
+import helpers.ElementHelper;
 import helpers.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,9 @@ public class BasePage {
     private final By loginTab = By.cssSelector("li a[href='/Account/Login.cshtml']");
     private final By bookTicketTab = By.cssSelector("li a[href='/Page/BookTicketPage.cshtml']");
     private final By pageNameLabel = By.cssSelector("div#content h1[align='center']");
+    private final By changePasswordTab = By.cssSelector("li a[href='/Account/ChangePassword.cshtml']");
+    private final By myTicketTab = By.cssSelector("li a[href='/Page/ManageTicket.cshtml']");
+    private final By logoutTab = By.cssSelector("li a[href='/Account/Logout']");
 
     //Elements
     private WebElement greetingMsgElement() {
@@ -32,6 +36,18 @@ public class BasePage {
 
     private WebElement pageNameLabelElement() {
         return Constants.WEBDRIVER.findElement(pageNameLabel);
+    }
+
+    private WebElement changePasswordTabElement() {
+        return Constants.WEBDRIVER.findElement(changePasswordTab);
+    }
+
+    private WebElement myTicketTabElement() {
+        return Constants.WEBDRIVER.findElement(myTicketTab);
+    }
+
+    private WebElement logoutTabElement() {
+        return Constants.WEBDRIVER.findElement(logoutTab);
     }
 
     //Methods
@@ -56,5 +72,25 @@ public class BasePage {
     public String getPageNameLabel() {
         Wait.untilElementVisible(pageNameLabel, Constants.TIME_WAIT);
         return pageNameLabelElement().getText();
+    }
+
+    public void goToChangePasswordPage() {
+        changePasswordTabElement().click();
+    }
+
+    public void goToMyTicketPage() {
+        myTicketTabElement().click();
+    }
+
+    public boolean doesMyTicketTabExist() {
+        return ElementHelper.doesElementExist(myTicketTabElement());
+    }
+
+    public boolean doesChangePasswordTabExist() {
+        return ElementHelper.doesElementExist(changePasswordTabElement());
+    }
+
+    public boolean doesLogoutTabExist() {
+        return ElementHelper.doesElementExist(logoutTabElement());
     }
 }

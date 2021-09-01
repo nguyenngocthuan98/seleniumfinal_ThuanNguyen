@@ -1,7 +1,7 @@
 package tests;
 
 import entities.Account;
-import helpers.Constants;
+import helpers.DataHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -22,8 +22,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can log into Railway with valid username and password")
     public void tc01_LoginValidAccountTest() {
         LogHelper.logInfo("Set Email and Password values for Account object");
-        account.setEmail(Constants.EMAIL);
-        account.setPassword(Constants.PASSWORD);
+        DataHelper.setValidLoginAccount(account);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
@@ -39,8 +38,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
         LogHelper.logInfo("Set Username is blank and valid Password value for Account object");
-        account.setEmail("");
-        account.setPassword(Constants.PASSWORD);
+        DataHelper.setBlankEmailLoginAccount(account);
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -57,8 +55,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can not log into Railway with invalid password")
     public void tc03_LoginInvalidPasswordTest() {
         LogHelper.logInfo("Set Username value and invalid Password value for Account object");
-        account.setEmail(Constants.EMAIL);
-        account.setPassword("this_is_wrong_password");
+        DataHelper.setInvalidPasswordLoginAccount(account);
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -77,8 +74,7 @@ public class LoginTests extends BaseTests {
         loginPage.goToLoginPage();
 
         LogHelper.logInfo("Set Username value and wrong Password value for Account object");
-        account.setEmail(Constants.EMAIL);
-        account.setPassword("this_is_wrong_password");
+        DataHelper.setInvalidPasswordLoginAccount(account);
 
         LogHelper.logInfo("Login with wrong password several times util warning message appear");
         loginPage.loginSeveralTimes(account, numberOfTimesForWarningMsg);
@@ -88,5 +84,33 @@ public class LoginTests extends BaseTests {
                 "You have used 4 out of 5 login attempts. " +
                         "After all 5 have been used, you will be unable to login for 15 minutes.",
                 "Login form error message doesn't display as expected.");
+    }
+
+    @Test(testName = "Additional pages display once user logged in")
+    public void tc06_AdditionalPagesUponLoginTest() {
+        LogHelper.logInfo("Set Email and Password values for Account object");
+        DataHelper.setValidLoginAccount(account);
+
+        LogHelper.logInfo("Login with valid account");
+        loginPage.login(account);
+
+        LogHelper.logInfo("Check My ticket tab display");
+        Assert.assertTrue(loginPage.doesMyTicketTabExist(), "My ticket tab name doesn't display.");
+        LogHelper.logInfo("Check Change password tab display");
+        Assert.assertTrue(loginPage.doesChangePasswordTabExist(), "Change password tab name doesn't display.");
+        LogHelper.logInfo("Check Log out tab display");
+        Assert.assertTrue(loginPage.doesLogoutTabExist(), "Log out tab name doesn't display.");
+
+        LogHelper.logInfo("Go to My ticket page");
+        loginPage.goToMyTicketPage();
+        LogHelper.logInfo("Check My ticket page name");
+        Assert.assertEquals(loginPage.getPageNameLabel(), "Manage Tickets",
+                "My Ticket page name doesn't display as expected.");
+
+        LogHelper.logInfo("Go to Change password page");
+        loginPage.goToChangePasswordPage();
+        LogHelper.logInfo("Check Change password page name");
+        Assert.assertEquals(loginPage.getPageNameLabel(), "Change password",
+                "Change password page name doesn't display as expected.");
     }
 }
