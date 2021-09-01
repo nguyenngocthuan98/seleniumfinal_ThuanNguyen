@@ -68,4 +68,25 @@ public class LoginTests extends BaseTests {
                 "There was a problem with your login and/or errors exist in your form.",
                 "Login form error message doesn't display as expected.");
     }
+
+    @Test(testName = "System shows message when user enters wrong password several times.")
+    public void tc05_WrongPasswordSeveralTimesTest() {
+        int limitedNumberOfTimes = 5;
+
+        LogHelper.logInfo("Go to Login page");
+        loginPage.goToLoginPage();
+
+        LogHelper.logInfo("Set Username value and wrong Password value for Account object");
+        account.setEmail(Constants.EMAIL);
+        account.setPassword("this_is_wrong_password");
+
+        LogHelper.logInfo("Login with wrong password several times util warning message appear");
+        loginPage.loginWrongPasswordSeveralTimes(account, limitedNumberOfTimes);
+
+        LogHelper.logInfo("Check login warning message");
+        Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
+                "You have used 4 out of 5 login attempts. " +
+                        "After all 5 have been used, you will be unable to login for 15 minutes.",
+                "Login form error message doesn't display as expected.");
+    }
 }
