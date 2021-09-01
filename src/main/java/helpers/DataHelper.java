@@ -19,7 +19,7 @@ public class DataHelper {
         return faker.numerify("########");
     }
 
-    public static Date getCurrentDate(){
+    public static Date getCurrentDate() {
         return new Date();
     }
 }

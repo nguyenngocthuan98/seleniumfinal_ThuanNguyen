@@ -26,6 +26,7 @@ public class ElementHelper {
 
     /**
      * Get Depart day by index value of dropdown.
+     *
      * @param indexDay
      * @return
      */
@@ -40,6 +41,7 @@ public class ElementHelper {
     /**
      * Get Expired day by Depart day of ticket.
      * Convert Depart day value from String type to Date type, using calendar -1 day and then convert to String again.
+     *
      * @param departDay
      * @return
      * @throws ParseException
@@ -52,5 +54,14 @@ public class ElementHelper {
         calendar.add(Calendar.DATE, -1);
 
         return formatDate().format(calendar.getTime());
+    }
+
+    public static boolean doesElementDisplay(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            System.out.println("Element " + element.getText() + " doesn't exist");
+            return false;
+        }
     }
 }
