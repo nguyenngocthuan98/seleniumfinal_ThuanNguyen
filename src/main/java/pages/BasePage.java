@@ -82,15 +82,15 @@ public class BasePage {
         myTicketTabElement().click();
     }
 
-    public boolean doesMyTicketTabExist() {
-        return ElementHelper.doesElementExist(myTicketTabElement());
+    public boolean doesMyTicketTabDisplay() {
+        return ElementHelper.doesElementDisplay(myTicketTabElement());
     }
 
-    public boolean doesChangePasswordTabExist() {
-        return ElementHelper.doesElementExist(changePasswordTabElement());
+    public boolean doesChangePasswordTabDisplay() {
+        return ElementHelper.doesElementDisplay(changePasswordTabElement());
     }
 
-    public boolean doesLogoutTabExist() {
-        return ElementHelper.doesElementExist(logoutTabElement());
+    public boolean doesLogoutTabDisplay() {
+        return ElementHelper.doesElementDisplay(logoutTabElement());
     }
 }

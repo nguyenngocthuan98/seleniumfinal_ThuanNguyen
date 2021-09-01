@@ -14,4 +14,9 @@ public class Account {
     private String password;
     private String rePassword;
     private String pid;
+
+    public Account(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

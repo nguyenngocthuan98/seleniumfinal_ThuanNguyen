@@ -1,7 +1,7 @@
 package tests;
 
 import entities.Account;
-import helpers.DataHelper;
+import helpers.Constants;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -10,7 +10,7 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
-    private final Account account = new Account();
+    Account account;
 
     @BeforeMethod
     public void preConditions() {
@@ -22,7 +22,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can log into Railway with valid username and password")
     public void tc01_LoginValidAccountTest() {
         LogHelper.logInfo("Set Email and Password values for Account object");
-        DataHelper.setValidLoginAccount(account);
+        new Account(Constants.EMAIL, Constants.PASSWORD);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
@@ -38,7 +38,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can't login with blank Username text box")
     public void tc02_LoginBlankUsernameTest() {
         LogHelper.logInfo("Set Username is blank and valid Password value for Account object");
-        DataHelper.setBlankEmailLoginAccount(account);
+        new Account("", Constants.PASSWORD);
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -55,7 +55,7 @@ public class LoginTests extends BaseTests {
     @Test(testName = "User can not log into Railway with invalid password")
     public void tc03_LoginInvalidPasswordTest() {
         LogHelper.logInfo("Set Username value and invalid Password value for Account object");
-        DataHelper.setInvalidPasswordLoginAccount(account);
+        new Account(Constants.EMAIL, "this_is_wrong_password");
 
         LogHelper.logInfo("Login with invalid account");
         loginPage.login(account);
@@ -70,11 +70,8 @@ public class LoginTests extends BaseTests {
     public void tc05_WrongPasswordSeveralTimesTest() {
         int numberOfTimesForWarningMsg = 4;
 
-        LogHelper.logInfo("Go to Login page");
-        loginPage.goToLoginPage();
-
         LogHelper.logInfo("Set Username value and wrong Password value for Account object");
-        DataHelper.setInvalidPasswordLoginAccount(account);
+        new Account(Constants.EMAIL, "this_is_wrong_password");
 
         LogHelper.logInfo("Login with wrong password several times util warning message appear");
         loginPage.loginSeveralTimes(account, numberOfTimesForWarningMsg);
@@ -89,26 +86,28 @@ public class LoginTests extends BaseTests {
     @Test(testName = "Additional pages display once user logged in")
     public void tc06_AdditionalPagesUponLoginTest() {
         LogHelper.logInfo("Set Email and Password values for Account object");
-        DataHelper.setValidLoginAccount(account);
+        new Account(Constants.EMAIL, Constants.PASSWORD);
 
         LogHelper.logInfo("Login with valid account");
         loginPage.login(account);
 
         LogHelper.logInfo("Check My ticket tab display");
-        Assert.assertTrue(loginPage.doesMyTicketTabExist(), "My ticket tab name doesn't display.");
+        Assert.assertTrue(loginPage.doesMyTicketTabDisplay(), "My ticket tab doesn't display.");
         LogHelper.logInfo("Check Change password tab display");
-        Assert.assertTrue(loginPage.doesChangePasswordTabExist(), "Change password tab name doesn't display.");
+        Assert.assertTrue(loginPage.doesChangePasswordTabDisplay(), "Change password tab doesn't display.");
         LogHelper.logInfo("Check Log out tab display");
-        Assert.assertTrue(loginPage.doesLogoutTabExist(), "Log out tab name doesn't display.");
+        Assert.assertTrue(loginPage.doesLogoutTabDisplay(), "Log out tab doesn't display.");
 
         LogHelper.logInfo("Go to My ticket page");
         loginPage.goToMyTicketPage();
+
         LogHelper.logInfo("Check My ticket page name");
         Assert.assertEquals(loginPage.getPageNameLabel(), "Manage Tickets",
                 "My Ticket page name doesn't display as expected.");
 
         LogHelper.logInfo("Go to Change password page");
         loginPage.goToChangePasswordPage();
+
         LogHelper.logInfo("Check Change password page name");
         Assert.assertEquals(loginPage.getPageNameLabel(), "Change password",
                 "Change password page name doesn't display as expected.");

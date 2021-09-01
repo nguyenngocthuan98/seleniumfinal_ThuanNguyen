@@ -56,7 +56,7 @@ public class ElementHelper {
         return formatDate().format(calendar.getTime());
     }
 
-    public static boolean doesElementExist(WebElement element) {
+    public static boolean doesElementDisplay(WebElement element) {
         try {
             return element.isDisplayed();
         } catch (Exception e) {
