@@ -11,7 +11,7 @@ public class Wait {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void notStalenessOf(WebElement element, int seconds) {
+    public static void untilElementStillAttached(WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(Constants.WEBDRIVER, seconds);
         wait.until(ExpectedConditions.not(ExpectedConditions.stalenessOf(element)));
     }

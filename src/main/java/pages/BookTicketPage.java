@@ -2,10 +2,14 @@ package pages;
 
 import entities.Ticket;
 import helpers.Constants;
+import helpers.DataHelper;
 import helpers.ElementHelper;
 import helpers.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class BookTicketPage extends BasePage {
     private final String dynamicOfValuesByColumn =
@@ -99,12 +103,25 @@ public class BookTicketPage extends BasePage {
         return valueOfDepartDateElement().getText();
     }
 
+    /**
+     * Choose random depart date from drop-down list:
+     * Get current date and add a random number of date between 3-30
+     *
+     * @return random depart date
+     */
+    public String getDepartDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(DataHelper.getCurrentDate());
+        calendar.add(Calendar.DATE, DataHelper.getRandomNumber3To30());
+        return new SimpleDateFormat("M/d/yyyy").format(calendar.getTime());
+    }
+
     public void bookTicket(Ticket ticket) {
         Wait.untilElementVisible(departDateDropdown, Constants.TIME_WAIT);
         ElementHelper.scrollTo(departDateDropdownElement());
         ElementHelper.selectOption(departDateDropdownElement(), ticket.getDepartDate());
         ElementHelper.selectOption(departFromDropdownElement(), ticket.getDepartFrom());
-        Wait.notStalenessOf(arriveAtDropdownElement(), Constants.QUICK_TIME);
+        Wait.untilElementStillAttached(arriveAtDropdownElement(), Constants.QUICK_TIME);
         ElementHelper.selectOption(arriveAtDropdownElement(), ticket.getArriveAt());
         ElementHelper.selectOption(seatTypeDropdownElement(), ticket.getSeatType());
         ElementHelper.selectOption(ticketAmountDropdownElement(), ticket.getAmounts());

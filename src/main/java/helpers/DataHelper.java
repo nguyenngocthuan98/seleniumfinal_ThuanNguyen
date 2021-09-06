@@ -19,7 +19,7 @@ public class DataHelper {
         return new Date();
     }
 
-    public static int getRandomDepartDate() {
+    public static int getRandomNumber3To30() {
         return faker.number().numberBetween(3, 30);
     }
 }
