@@ -11,15 +11,15 @@ public class DataHelper {
         return faker.internet().emailAddress();
     }
 
-    public static String getRandomPassword() {
-        return faker.letterify("????????");
-    }
-
     public static String getRandomNumber() {
         return faker.numerify("########");
     }
 
     public static Date getCurrentDate() {
         return new Date();
+    }
+
+    public static int getRandomDepartDate() {
+        return faker.number().numberBetween(3, 30);
     }
 }

@@ -25,34 +25,12 @@ public class ElementHelper {
     }
 
     /**
-     * Get Depart day by index value of dropdown.
-     *
-     * @param indexDay
-     * @return
+     * Choose random depart date: Get current date and add a random date number between 3-30
+     * @return departDay after random add date
      */
-    public static String departDay(int indexDay) {
+    public static String departDay() {
         calendar.setTime(DataHelper.getCurrentDate());
-
-        calendar.add(Calendar.DATE, 3 + indexDay);
-
-        return formatDate().format(calendar.getTime());
-    }
-
-    /**
-     * Get Expired day by Depart day of ticket.
-     * Convert Depart day value from String type to Date type, using calendar -1 day and then convert to String again.
-     *
-     * @param departDay
-     * @return
-     * @throws ParseException
-     */
-    public static String expiredDay(String departDay) throws ParseException {
-        Date expiredDay = formatDate().parse(departDay);
-
-        calendar.setTime(expiredDay);
-
-        calendar.add(Calendar.DATE, -1);
-
+        calendar.add(Calendar.DATE, DataHelper.getRandomDepartDate());
         return formatDate().format(calendar.getTime());
     }
 
