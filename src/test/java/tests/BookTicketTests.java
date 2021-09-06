@@ -14,7 +14,7 @@ import pages.RegisterPage;
 
 public class BookTicketTests extends BaseTests {
     private final LoginPage loginPage = new LoginPage();
-    private final BookTicketPage BookTicketPage = new BookTicketPage();
+    private final BookTicketPage bookTicketPage = new BookTicketPage();
     private final RegisterPage registerPage = new RegisterPage();
     private Account account;
     private Ticket ticket;
@@ -34,7 +34,7 @@ public class BookTicketTests extends BaseTests {
     @Test(testName = "Login page displays when un-logged User clicks on Book ticket tab")
     public void tc04_BookTicketWithUnloggedUserTest() {
         LogHelper.logInfo("Go to Book Ticket page");
-        BookTicketPage.goToBookTicketPage();
+        bookTicketPage.goToBookTicketPage();
 
         LogHelper.logInfo("Check login page name");
         Assert.assertEquals(loginPage.getPageNameLabel(), "Login Page",
@@ -43,7 +43,7 @@ public class BookTicketTests extends BaseTests {
 
     @Test(testName = "User can book 1 ticket at a time", groups = "tc14")
     public void tc14_BookOneTicketTest() {
-        String departDay = BookTicketPage.getDepartDay();
+        String departDay = bookTicketPage.getDepartDay();
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Soft bed with air conditioner";
@@ -59,20 +59,20 @@ public class BookTicketTests extends BaseTests {
         loginPage.goToBookTicketPage();
 
         LogHelper.logInfo("Book ticket");
-        BookTicketPage.bookTicket(ticket);
+        bookTicketPage.bookTicket(ticket);
 
         LogHelper.logInfo("Check title of Book ticket page when book ticket successfully.");
-        Assert.assertEquals(BookTicketPage.getPageTitle(), "Ticket Booked Successfully!",
+        Assert.assertEquals(bookTicketPage.getPageTitle(), "Ticket Booked Successfully!",
                 "Title of page doesn't display as expected");
         LogHelper.logInfo("Check Depart Date is matched.");
-        Assert.assertEquals(BookTicketPage.getValueOfDepartDate(), departDay, "Depart Date is not matched.");
+        Assert.assertEquals(bookTicketPage.getValueOfDepartDate(), departDay, "Depart Date is not matched.");
         LogHelper.logInfo("Check Depart Station is matched.");
-        Assert.assertEquals(BookTicketPage.getValueOfDepartFrom(), departFrom, "Depart Station is not matched.");
+        Assert.assertEquals(bookTicketPage.getValueOfDepartFrom(), departFrom, "Depart Station is not matched.");
         LogHelper.logInfo("Check Arrive Station is matched.");
-        Assert.assertEquals(BookTicketPage.getValueOfArriveAt(), arriveAt, "Arrive Station is not matched.");
+        Assert.assertEquals(bookTicketPage.getValueOfArriveAt(), arriveAt, "Arrive Station is not matched.");
         LogHelper.logInfo("Check Seat Type is matched.");
-        Assert.assertEquals(BookTicketPage.getValueOfSeatType(), seatType, "Seat Type is not matched.");
+        Assert.assertEquals(bookTicketPage.getValueOfSeatType(), seatType, "Seat Type is not matched.");
         LogHelper.logInfo("Check Ticket Amount is matched.");
-        Assert.assertEquals(BookTicketPage.getValueOfTicketAmount(), ticketAmount, "Ticket Amount is not matched.");
+        Assert.assertEquals(bookTicketPage.getValueOfTicketAmount(), ticketAmount, "Ticket Amount is not matched.");
     }
 }
