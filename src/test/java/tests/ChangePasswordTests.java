@@ -17,7 +17,7 @@ public class ChangePasswordTests extends BaseTests {
     private final ChangePasswordPage changePasswordPage = new ChangePasswordPage();
     private static Account account;
     String password = Constants.PASSWORD;
-    String newPassword = Constants.NEWVALIDPASSWORD;
+    String newPassword = "newValidPassword";
 
     @BeforeMethod
     public void preConditions() {
