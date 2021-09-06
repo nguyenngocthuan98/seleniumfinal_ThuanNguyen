@@ -44,11 +44,8 @@ public class ChangePasswordPage extends BasePage {
 
     public void changePassword(Account account, String newPassword) {
         ElementHelper.scrollTo(currentPasswordFieldElement());
-        currentPasswordFieldElement().clear();
         currentPasswordFieldElement().sendKeys(account.getPassword());
-        newPasswordFieldElement().clear();
         newPasswordFieldElement().sendKeys(newPassword);
-        confirmPasswordFieldElement().clear();
         confirmPasswordFieldElement().sendKeys(newPassword);
         changePasswordButtonElement().click();
     }
