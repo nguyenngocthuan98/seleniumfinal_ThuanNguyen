@@ -15,15 +15,14 @@ public class ChangePasswordTests extends BaseTests {
     private final RegisterPage registerPage = new RegisterPage();
     private final LoginPage loginPage = new LoginPage();
     private final ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-    private static Account account;
-    String password = Constants.PASSWORD;
-    String newPassword = "newValidPassword";
+    private Account account;
 
     @BeforeMethod
     public void preConditions() {
         LogHelper.logInfo("Pre-conditions");
         LogHelper.logInfo("Set valid values for Account object");
-        account = new Account(DataHelper.getRandomEmail(), password, password, DataHelper.getRandomNumber());
+        account = new Account(DataHelper.getRandomEmail(), Constants.PASSWORD, Constants.PASSWORD,
+                DataHelper.getRandomNumber());
 
         LogHelper.logInfo("Go to register page and register new account");
         registerPage.goToRegisterPage();
@@ -42,7 +41,7 @@ public class ChangePasswordTests extends BaseTests {
         loginPage.goToChangePasswordPage();
 
         LogHelper.logInfo("Change password");
-        changePasswordPage.changePassword(account, newPassword);
+        changePasswordPage.changePassword(account, "newValidPassword");
 
         LogHelper.logInfo("Check change password success message");
         Assert.assertEquals(changePasswordPage.getChangePasswordSuccessMessage(),
