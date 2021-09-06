@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Account {
     private String email;
     private String password;
-    private String rePassword;
+    private String confirmPassword;
     private String pid;
 
     public Account(String email, String password) {

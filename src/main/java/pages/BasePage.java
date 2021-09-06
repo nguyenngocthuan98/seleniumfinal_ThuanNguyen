@@ -16,6 +16,7 @@ public class BasePage {
     private final By changePasswordTab = By.cssSelector("li a[href='/Account/ChangePassword.cshtml']");
     private final By myTicketTab = By.cssSelector("li a[href='/Page/ManageTicket.cshtml']");
     private final By logoutTab = By.cssSelector("li a[href='/Account/Logout']");
+    private final By registerTab = By.cssSelector("li a[href='/Account/Register.cshtml']");
 
     //Elements
     private WebElement greetingMsgElement() {
@@ -48,6 +49,10 @@ public class BasePage {
 
     private WebElement logoutTabElement() {
         return Constants.WEBDRIVER.findElement(logoutTab);
+    }
+
+    private WebElement registerTabElement() {
+        return Constants.WEBDRIVER.findElement(registerTab);
     }
 
     //Methods
@@ -92,5 +97,9 @@ public class BasePage {
 
     public boolean doesLogoutTabDisplay() {
         return ElementHelper.doesElementDisplay(logoutTabElement());
+    }
+
+    public void goToRegisterPage() {
+        registerTabElement().click();
     }
 }
