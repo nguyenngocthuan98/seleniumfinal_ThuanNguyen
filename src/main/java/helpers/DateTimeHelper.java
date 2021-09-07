@@ -12,9 +12,9 @@ public class DateTimeHelper {
      *
      * @return random depart date
      */
-    public static String getDateFromToday() {
+    public static String getDateFromToday(int day) {
         calendar.setTime(DataHelper.getCurrentDate());
-        calendar.add(Calendar.DATE, DataHelper.getRandomNumber3To30());
+        calendar.add(Calendar.DATE, day);
         return new SimpleDateFormat("M/d/yyyy").format(calendar.getTime());
     }
 }
