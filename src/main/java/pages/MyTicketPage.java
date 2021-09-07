@@ -2,6 +2,7 @@ package pages;
 
 import entities.Ticket;
 import helpers.Constants;
+import helpers.DriverHelper;
 import helpers.ElementHelper;
 import helpers.Wait;
 import org.openqa.selenium.By;
@@ -33,7 +34,7 @@ public class MyTicketPage extends BasePage {
     }
 
     //Methods
-    public boolean doesTicketExist(Ticket ticket){
+    public boolean doesTicketExist(Ticket ticket) {
         By ticketInformation = By.xpath(String.format(ticketDynamic,
                 ticket.getDepartFrom(),
                 ticket.getArriveAt(),
@@ -48,6 +49,6 @@ public class MyTicketPage extends BasePage {
         ElementHelper.scrollTo(cancelButtonElement(ticket));
         cancelButtonElement(ticket).click();
         Wait.untilAlertPopupDisplays(Constants.QUICK_TIME);
-        ElementHelper.acceptAlert();
+        DriverHelper.acceptAlert();
     }
 }
