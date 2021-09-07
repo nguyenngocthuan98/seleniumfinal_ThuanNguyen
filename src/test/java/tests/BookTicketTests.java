@@ -66,14 +66,14 @@ public class BookTicketTests extends BaseTests {
         Assert.assertEquals(bookTicketPage.getPageTitle(), "Ticket Booked Successfully!",
                 "Title of page doesn't display as expected");
         LogHelper.logInfo("Check Depart Date is matched.");
-        Assert.assertEquals(bookTicketPage.getValueOfDepartDate(), departDay, "Depart Date is not matched.");
+        Assert.assertEquals(bookTicketPage.getDepartDateValue(), departDay, "Depart Date is not matched.");
         LogHelper.logInfo("Check Depart Station is matched.");
-        Assert.assertEquals(bookTicketPage.getValueOfDepartFrom(), departFrom, "Depart Station is not matched.");
+        Assert.assertEquals(bookTicketPage.getDepartFromValue(), departFrom, "Depart Station is not matched.");
         LogHelper.logInfo("Check Arrive Station is matched.");
-        Assert.assertEquals(bookTicketPage.getValueOfArriveAt(), arriveAt, "Arrive Station is not matched.");
+        Assert.assertEquals(bookTicketPage.getArriveAtValue(), arriveAt, "Arrive Station is not matched.");
         LogHelper.logInfo("Check Seat Type is matched.");
-        Assert.assertEquals(bookTicketPage.getValueOfSeatType(), seatType, "Seat Type is not matched.");
+        Assert.assertEquals(bookTicketPage.getSeatTypeValue(), seatType, "Seat Type is not matched.");
         LogHelper.logInfo("Check Ticket Amount is matched.");
-        Assert.assertEquals(bookTicketPage.getValueOfTicketAmount(), ticketAmount, "Ticket Amount is not matched.");
+        Assert.assertEquals(bookTicketPage.getTicketAmountValue(), ticketAmount, "Ticket Amount is not matched.");
     }
 }

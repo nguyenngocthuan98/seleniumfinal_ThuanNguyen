@@ -19,18 +19,18 @@ public class BookTicketPage extends BasePage {
     private final By seatTypeDropdown = By.cssSelector("select[name='SeatType']");
     private final By ticketAmountDropdown = By.cssSelector("select[name='TicketAmount']");
     private final By pageTitle = By.cssSelector("div#content h1[align='center']");
-    private final By valueOfDepartFrom = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Station"));
-    private final By valueOfArriveAt = By.xpath(String.format(dynamicOfValuesByColumn, "Arrive Station"));
-    private final By valueOfSeatType = By.xpath(String.format(dynamicOfValuesByColumn, "Seat Type"));
-    private final By valueOfDepartDate = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Date"));
-    private final By valueOfAmount = By.xpath(String.format(dynamicOfValuesByColumn, "Amount"));
+    private final By departFromValue = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Station"));
+    private final By arriveAtValue = By.xpath(String.format(dynamicOfValuesByColumn, "Arrive Station"));
+    private final By seatTypeValue = By.xpath(String.format(dynamicOfValuesByColumn, "Seat Type"));
+    private final By departDateValue = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Date"));
+    private final By amountValue = By.xpath(String.format(dynamicOfValuesByColumn, "Amount"));
 
     //Elements
     private WebElement bookTicketButtonElement() {
         return Constants.WEBDRIVER.findElement(bookTicketButton);
     }
 
-    private WebElement titleOfPageElement() {
+    private WebElement pageTitleElement() {
         return Constants.WEBDRIVER.findElement(pageTitle);
     }
 
@@ -54,49 +54,49 @@ public class BookTicketPage extends BasePage {
         return Constants.WEBDRIVER.findElement(ticketAmountDropdown);
     }
 
-    private WebElement valueOfDepartFromElement() {
-        return Constants.WEBDRIVER.findElement(valueOfDepartFrom);
+    private WebElement departFromValueElement() {
+        return Constants.WEBDRIVER.findElement(departFromValue);
     }
 
-    private WebElement valueOfArriveAtElement() {
-        return Constants.WEBDRIVER.findElement(valueOfArriveAt);
+    private WebElement arriveAtValueElement() {
+        return Constants.WEBDRIVER.findElement(arriveAtValue);
     }
 
-    private WebElement valueOfSeatTypeElement() {
-        return Constants.WEBDRIVER.findElement(valueOfSeatType);
+    private WebElement seatTypeValueElement() {
+        return Constants.WEBDRIVER.findElement(seatTypeValue);
     }
 
-    private WebElement valueOfDepartDateElement() {
-        return Constants.WEBDRIVER.findElement(valueOfDepartDate);
+    private WebElement departDateValueElement() {
+        return Constants.WEBDRIVER.findElement(departDateValue);
     }
 
-    private WebElement valueOfAmountElement() {
-        return Constants.WEBDRIVER.findElement(valueOfAmount);
+    private WebElement amountValueElement() {
+        return Constants.WEBDRIVER.findElement(amountValue);
     }
 
     //Methods
     public String getPageTitle() {
-        return titleOfPageElement().getText();
+        return pageTitleElement().getText();
     }
 
-    public String getValueOfDepartFrom() {
-        return valueOfDepartFromElement().getText();
+    public String getDepartFromValue() {
+        return departFromValueElement().getText();
     }
 
-    public String getValueOfArriveAt() {
-        return valueOfArriveAtElement().getText();
+    public String getArriveAtValue() {
+        return arriveAtValueElement().getText();
     }
 
-    public String getValueOfSeatType() {
-        return valueOfSeatTypeElement().getText();
+    public String getSeatTypeValue() {
+        return seatTypeValueElement().getText();
     }
 
-    public String getValueOfTicketAmount() {
-        return valueOfAmountElement().getText();
+    public String getTicketAmountValue() {
+        return amountValueElement().getText();
     }
 
-    public String getValueOfDepartDate() {
-        return valueOfDepartDateElement().getText();
+    public String getDepartDateValue() {
+        return departDateValueElement().getText();
     }
 
     public void bookTicket(Ticket ticket) {
