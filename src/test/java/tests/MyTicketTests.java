@@ -36,8 +36,8 @@ public class MyTicketTests extends BaseTests {
 
     @Test(testName = "User can cancel a ticket")
     public void tc16_CancelTicketTest() {
-        int threeDaysFromToday = 3;
-        String departDay = DateTimeHelper.getDateFromToday(threeDaysFromToday);
+        int dayNext = 3;
+        String departDay = DateTimeHelper.getDateFromToday(dayNext);
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Soft bed with air conditioner";
