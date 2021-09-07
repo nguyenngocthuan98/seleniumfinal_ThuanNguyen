@@ -2,14 +2,10 @@ package pages;
 
 import entities.Ticket;
 import helpers.Constants;
-import helpers.DataHelper;
 import helpers.ElementHelper;
 import helpers.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class BookTicketPage extends BasePage {
     private final String dynamicOfValuesByColumn =
@@ -101,19 +97,6 @@ public class BookTicketPage extends BasePage {
 
     public String getValueOfDepartDate() {
         return valueOfDepartDateElement().getText();
-    }
-
-    /**
-     * Choose random depart date from drop-down list:
-     * Get current date and add a random number of date between 3-30
-     *
-     * @return random depart date
-     */
-    public String getDepartDay() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(DataHelper.getCurrentDate());
-        calendar.add(Calendar.DATE, DataHelper.getRandomNumber3To30());
-        return new SimpleDateFormat("M/d/yyyy").format(calendar.getTime());
     }
 
     public void bookTicket(Ticket ticket) {

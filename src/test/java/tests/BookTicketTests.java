@@ -4,6 +4,7 @@ import entities.Account;
 import entities.Ticket;
 import helpers.Constants;
 import helpers.DataHelper;
+import helpers.DateTimeHelper;
 import helpers.LogHelper;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -43,7 +44,7 @@ public class BookTicketTests extends BaseTests {
 
     @Test(testName = "User can book 1 ticket at a time", groups = "tc14")
     public void tc14_BookOneTicketTest() {
-        String departDay = bookTicketPage.getDepartDay();
+        String departDay = DateTimeHelper.getDateFromToday();
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Soft bed with air conditioner";
