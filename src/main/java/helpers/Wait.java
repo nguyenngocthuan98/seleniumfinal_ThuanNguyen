@@ -15,4 +15,9 @@ public class Wait {
         WebDriverWait wait = new WebDriverWait(Constants.WEBDRIVER, seconds);
         wait.until(ExpectedConditions.not(ExpectedConditions.stalenessOf(element)));
     }
+
+    public static void untilAlertPopupDisplays(int seconds) {
+        WebDriverWait wait = new WebDriverWait(Constants.WEBDRIVER, seconds);
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
 }

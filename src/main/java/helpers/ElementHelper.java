@@ -21,4 +21,8 @@ public class ElementHelper {
             return false;
         }
     }
+
+    public static void acceptAlert(){
+        Constants.WEBDRIVER.switchTo().alert().accept();
+    }
 }

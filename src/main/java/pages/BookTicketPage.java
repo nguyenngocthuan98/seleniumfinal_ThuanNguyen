@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class BookTicketPage extends BasePage {
-    private final String dynamicOfValuesByColumn =
+    private final String valuesByColumnDynamic =
             "//table[@class='MyTable WideTable']/tbody/tr/td[count(//th)-count(//th[text()='%s']/following-sibling::th)]";
 
     //Locators
@@ -19,11 +19,11 @@ public class BookTicketPage extends BasePage {
     private final By seatTypeDropdown = By.cssSelector("select[name='SeatType']");
     private final By ticketAmountDropdown = By.cssSelector("select[name='TicketAmount']");
     private final By pageTitle = By.cssSelector("div#content h1[align='center']");
-    private final By departFromValue = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Station"));
-    private final By arriveAtValue = By.xpath(String.format(dynamicOfValuesByColumn, "Arrive Station"));
-    private final By seatTypeValue = By.xpath(String.format(dynamicOfValuesByColumn, "Seat Type"));
-    private final By departDateValue = By.xpath(String.format(dynamicOfValuesByColumn, "Depart Date"));
-    private final By amountValue = By.xpath(String.format(dynamicOfValuesByColumn, "Amount"));
+    private final By departFromValue = By.xpath(String.format(valuesByColumnDynamic, "Depart Station"));
+    private final By arriveAtValue = By.xpath(String.format(valuesByColumnDynamic, "Arrive Station"));
+    private final By seatTypeValue = By.xpath(String.format(valuesByColumnDynamic, "Seat Type"));
+    private final By departDateValue = By.xpath(String.format(valuesByColumnDynamic, "Depart Date"));
+    private final By amountValue = By.xpath(String.format(valuesByColumnDynamic, "Amount"));
 
     //Elements
     private WebElement bookTicketButtonElement() {
