@@ -11,10 +11,6 @@ public class DataHelper {
         return faker.internet().emailAddress();
     }
 
-    public static String getRandomPassword() {
-        return faker.letterify("????????");
-    }
-
     public static String getRandomNumber() {
         return faker.numerify("########");
     }
@@ -22,4 +18,5 @@ public class DataHelper {
     public static Date getCurrentDate() {
         return new Date();
     }
+
 }

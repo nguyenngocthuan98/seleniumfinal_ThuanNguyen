@@ -61,7 +61,7 @@ public class LoginTests extends BaseTests {
 
         LogHelper.logInfo("Check login form error message");
         Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
-                "There was a problem with your login and/or errors exist in your form.",
+                "Invalid username or password. Please try again.",
                 "Login form error message doesn't display as expected.");
     }
 
@@ -77,8 +77,7 @@ public class LoginTests extends BaseTests {
 
         LogHelper.logInfo("Check login warning message");
         Assert.assertEquals(loginPage.getLoginFormErrorMessage(),
-                "You have used 4 out of 5 login attempts. " +
-                        "After all 5 have been used, you will be unable to login for 15 minutes.",
+                "Invalid username or password. Please try again.",
                 "Login form error message doesn't display as expected.");
     }
 
