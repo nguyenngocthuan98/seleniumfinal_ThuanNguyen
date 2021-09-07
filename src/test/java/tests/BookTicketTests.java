@@ -44,7 +44,7 @@ public class BookTicketTests extends BaseTests {
 
     @Test(testName = "User can book 1 ticket at a time", groups = "tc14")
     public void tc14_BookOneTicketTest() {
-        String departDay = DateTimeHelper.getDateFromToday(3);
+        String departDay = DateTimeHelper.getDateFromToday(16);
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Soft bed with air conditioner";
