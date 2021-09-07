@@ -25,7 +25,7 @@ public class RegisterTests extends BaseTests {
         registerPage.register(account);
 
         LogHelper.logInfo("Check register success message");
-        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Thank you for registering your account",
+        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "You're here",
                 "Register success message doesn't display as expected");
     }
 }
