@@ -1,24 +1,30 @@
 package tests;
 
+import com.logigear.driver.DriverProperty;
+import com.logigear.driver.DriverUtils;
+import com.logigear.helper.BrowserSettingHelper;
 import helpers.Constants;
 import helpers.LogHelper;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class BaseTests {
     @BeforeMethod
-    public void beforeMethod() {
+    @Parameters("Browser")
+    public void beforeMethod(@Optional("chrome.local") String browser) throws Exception {
         LogHelper.logInfo("Before method");
-        WebDriverManager.chromedriver().setup();
-        Constants.WEBDRIVER = new ChromeDriver();
-        Constants.WEBDRIVER.get(Constants.BASE_URL);
+        DriverProperty driverProperty = BrowserSettingHelper.getDriverProperty(Constants.BROWSER_SETTING_FILE, browser);
+        DriverUtils.getDriver(driverProperty);
+        DriverUtils.setTimeOut(Constants.TIME_WAIT);
+        DriverUtils.navigate(Constants.BASE_URL);
+        Constants.WEBDRIVER = DriverUtils.getWebDriver();
     }
 
     @AfterMethod
     public void afterMethod() {
         LogHelper.logInfo("After method");
-        Constants.WEBDRIVER.quit();
+        DriverUtils.quitBrowser();
     }
 }

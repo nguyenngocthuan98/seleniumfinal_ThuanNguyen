@@ -40,5 +40,31 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+            <version>0.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>SeleniumCore</groupId>
+            <artifactId>SeleniumCore</artifactId>
+            <version>0.0.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/test/resources/libs/SeleniumCore-0.0.3.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

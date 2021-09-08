@@ -3,6 +3,7 @@ package helpers;
 import org.openqa.selenium.WebDriver;
 
 public class Constants {
+    public static final String BROWSER_SETTING_FILE = "src/test/resources/browsers.setting.ini";
     public static WebDriver WEBDRIVER;
     public final static String BASE_URL = "http://railway2.somee.com/Page/HomePage.cshtml";
 

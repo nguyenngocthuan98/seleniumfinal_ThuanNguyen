@@ -1,69 +1,46 @@
 package pages;
 
+import com.logigear.control.common.imp.Button;
+import com.logigear.control.common.imp.Label;
+import com.logigear.control.common.imp.TextBox;
 import entities.Account;
-import helpers.Constants;
-import helpers.ElementHelper;
-import helpers.Wait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
     //Locators
-    private final By emailField = By.id("username");
-    private final By passwordField = By.id("password");
-    private final By loginButton = By.cssSelector("p.form-actions input[type='submit']");
-    private final By loginFormErrorMsg = By.cssSelector("p[class='message error LoginForm']");
-    private final By emailErrorMsg = By.cssSelector("li.username label.validation-error");
-
-    //Elements
-    private WebElement emailFieldElement() {
-        return Constants.WEBDRIVER.findElement(emailField);
-    }
-
-    private WebElement passwordFieldElement() {
-        return Constants.WEBDRIVER.findElement(passwordField);
-    }
-
-    private WebElement loginButtonElement() {
-        return Constants.WEBDRIVER.findElement(loginButton);
-    }
-
-    private WebElement loginFormErrorMsgElement() {
-        return Constants.WEBDRIVER.findElement(loginFormErrorMsg);
-    }
-
-    private WebElement emailErrorMsgElement() {
-        return Constants.WEBDRIVER.findElement(emailErrorMsg);
-    }
+    private final TextBox emailField = new TextBox("id=username");
+    private final TextBox passwordField = new TextBox("id=password");
+    private final Button loginButton = new Button("css=p.form-actions input[type='submit']");
+    private final Label loginFormErrorMsg = new Label("css=p[class='message error LoginForm']");
+    private final Label emailErrorMsg = new Label("css=li.username label.validation-error");
 
     //Methods
     public String getLoginFormErrorMessage() {
-        return loginFormErrorMsgElement().getText();
+        return loginFormErrorMsg.getText();
     }
 
     public String getEmailErrorMessage() {
-        return emailErrorMsgElement().getText();
+        return emailErrorMsg.getText();
     }
 
     public void login(Account account) {
-        ElementHelper.scrollTo(emailFieldElement());
-        emailFieldElement().clear();
-        emailFieldElement().sendKeys(account.getEmail());
-        passwordFieldElement().clear();
-        passwordFieldElement().sendKeys(account.getPassword());
-        loginButtonElement().click();
+        emailField.scrollToView();
+        emailField.clear();
+        emailField.enter(account.getEmail());
+        passwordField.clear();
+        passwordField.enter(account.getPassword());
+        loginButton.click();
     }
 
     public void loginSeveralTimes(Account account, int timesNumber) {
-        ElementHelper.scrollTo(emailFieldElement());
-        emailFieldElement().clear();
-        emailFieldElement().sendKeys(account.getEmail());
+        emailField.scrollToView();
+        emailField.clear();
+        emailField.enter(account.getEmail());
         for (int i = 1; i <= timesNumber; i++) {
-            Wait.untilElementVisible(passwordField, Constants.TIME_WAIT);
-            ElementHelper.scrollTo(passwordFieldElement());
-            passwordFieldElement().clear();
-            passwordFieldElement().sendKeys(account.getPassword());
-            loginButtonElement().click();
+            passwordField.waitForDisplay();
+            passwordField.scrollToView();
+            passwordField.clear();
+            passwordField.enter(account.getPassword());
+            loginButton.click();
         }
     }
 }

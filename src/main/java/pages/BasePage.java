@@ -1,105 +1,65 @@
 package pages;
 
-import helpers.Constants;
-import helpers.ElementHelper;
-import helpers.Wait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.logigear.control.common.imp.Label;
+import com.logigear.control.common.imp.Link;
 
 public class BasePage {
-    //Locates
-    private final By greetingMsg = By.cssSelector("div.account > strong");
-    private final By welcomeMsg = By.cssSelector("div#content h1[align='center']");
-    private final By loginTab = By.cssSelector("li a[href='/Account/Login.cshtml']");
-    private final By bookTicketTab = By.cssSelector("li a[href='/Page/BookTicketPage.cshtml']");
-    private final By pageNameLabel = By.cssSelector("div#content h1[align='center']");
-    private final By changePasswordTab = By.cssSelector("li a[href='/Account/ChangePassword.cshtml']");
-    private final By myTicketTab = By.cssSelector("li a[href='/Page/ManageTicket.cshtml']");
-    private final By logoutTab = By.cssSelector("li a[href='/Account/Logout']");
-    private final By registerTab = By.cssSelector("li a[href='/Account/Register.cshtml']");
-
-    //Elements
-    private WebElement greetingMsgElement() {
-        return Constants.WEBDRIVER.findElement(greetingMsg);
-    }
-
-    private WebElement welcomeMsgElement() {
-        return Constants.WEBDRIVER.findElement(welcomeMsg);
-    }
-
-    private WebElement loginTabElement() {
-        return Constants.WEBDRIVER.findElement(loginTab);
-    }
-
-    private WebElement bookTicketTabElement() {
-        return Constants.WEBDRIVER.findElement(bookTicketTab);
-    }
-
-    private WebElement pageNameLabelElement() {
-        return Constants.WEBDRIVER.findElement(pageNameLabel);
-    }
-
-    private WebElement changePasswordTabElement() {
-        return Constants.WEBDRIVER.findElement(changePasswordTab);
-    }
-
-    private WebElement myTicketTabElement() {
-        return Constants.WEBDRIVER.findElement(myTicketTab);
-    }
-
-    private WebElement logoutTabElement() {
-        return Constants.WEBDRIVER.findElement(logoutTab);
-    }
-
-    private WebElement registerTabElement() {
-        return Constants.WEBDRIVER.findElement(registerTab);
-    }
+    //Locators
+    private final Label greetingMsg = new Label("css=div.account > strong");
+    private final Label welcomeMsg = new Label("css=div#content h1[align='center']");
+    private final Label pageNameLabel = new Label("css=div#content h1[align='center']");
+    private final Link loginTab = new Link("css=li a[href='/Account/Login.cshtml']");
+    private final Link bookTicketTab = new Link("css=li a[href='/Page/BookTicketPage.cshtml']");
+    private final Link changePasswordTab = new Link("css=li a[href='/Account/ChangePassword.cshtml']");
+    private final Link myTicketTab = new Link("css=li a[href='/Page/ManageTicket.cshtml']");
+    private final Link logoutTab = new Link("css=li a[href='/Account/Logout']");
+    private final Link registerTab = new Link("css=li a[href='/Account/Register.cshtml']");
 
     //Methods
     public String getGreetingMsg() {
-        Wait.untilElementVisible(greetingMsg, Constants.TIME_WAIT);
-        return greetingMsgElement().getText();
+        greetingMsg.waitForDisplay();
+        return greetingMsg.getText();
     }
 
     public String getWelcomeMsg() {
-        Wait.untilElementVisible(welcomeMsg, Constants.TIME_WAIT);
-        return welcomeMsgElement().getText();
+        welcomeMsg.waitForDisplay();
+        return welcomeMsg.getText();
     }
 
     public void goToLoginPage() {
-        loginTabElement().click();
+        loginTab.click();
     }
 
     public void goToBookTicketPage() {
-        bookTicketTabElement().click();
+        bookTicketTab.click();
     }
 
     public String getPageNameLabel() {
-        Wait.untilElementVisible(pageNameLabel, Constants.TIME_WAIT);
-        return pageNameLabelElement().getText();
+        pageNameLabel.waitForDisplay();
+        return pageNameLabel.getText();
     }
 
     public void goToChangePasswordPage() {
-        changePasswordTabElement().click();
+        changePasswordTab.click();
     }
 
     public void goToMyTicketPage() {
-        myTicketTabElement().click();
+        myTicketTab.click();
     }
 
     public boolean doesMyTicketTabDisplay() {
-        return ElementHelper.doesElementDisplay(myTicketTabElement());
+        return myTicketTab.isVisible();
     }
 
     public boolean doesChangePasswordTabDisplay() {
-        return ElementHelper.doesElementDisplay(changePasswordTabElement());
+        return changePasswordTab.isVisible();
     }
 
     public boolean doesLogoutTabDisplay() {
-        return ElementHelper.doesElementDisplay(logoutTabElement());
+        return logoutTab.isVisible();
     }
 
     public void goToRegisterPage() {
-        registerTabElement().click();
+        registerTab.click();
     }
 }
