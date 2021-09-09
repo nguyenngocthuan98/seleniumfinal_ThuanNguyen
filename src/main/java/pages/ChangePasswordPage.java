@@ -7,23 +7,23 @@ import entities.Account;
 
 public class ChangePasswordPage extends BasePage {
     //Locates
-    private final TextBox currentPasswordField = new TextBox("id=currentPassword");
-    private final TextBox newPasswordField = new TextBox("id=newPassword");
-    private final TextBox confirmPasswordField = new TextBox("id=confirmPassword");
-    private final Button changePasswordButton = new Button("css=input[type='submit']");
-    private final Label changePasswordSuccessMsg = new Label("css=p.message");
+    private final TextBox txtCurrentPassword = new TextBox("id=currentPassword");
+    private final TextBox txtNewPassword = new TextBox("id=newPassword");
+    private final TextBox txtConfirmPassword = new TextBox("id=confirmPassword");
+    private final Button btnChangePassword = new Button("css=input[type='submit']");
+    private final Label lblChangePasswordSuccessMsg = new Label("css=p.message");
 
     //Methods
-    public String getChangePasswordSuccessMessage() {
-        changePasswordSuccessMsg.waitForDisplay();
-        return changePasswordSuccessMsg.getText();
+    public String getChangePasswordSuccessMsg() {
+        lblChangePasswordSuccessMsg.waitForDisplay();
+        return lblChangePasswordSuccessMsg.getText();
     }
 
     public void changePassword(Account account, String newPassword) {
-        currentPasswordField.scrollToView();
-        currentPasswordField.enter(account.getPassword());
-        newPasswordField.enter(newPassword);
-        confirmPasswordField.enter(newPassword);
-        changePasswordButton.click();
+        txtCurrentPassword.scrollToView();
+        txtCurrentPassword.enter(account.getPassword());
+        txtNewPassword.enter(newPassword);
+        txtConfirmPassword.enter(newPassword);
+        btnChangePassword.click();
     }
 }

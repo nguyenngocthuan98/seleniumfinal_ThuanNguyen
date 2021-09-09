@@ -44,7 +44,7 @@ public class ChangePasswordTests extends BaseTests {
         changePasswordPage.changePassword(account, "newValidPassword");
 
         LogHelper.logInfo("Check change password success message");
-        Assert.assertEquals(changePasswordPage.getChangePasswordSuccessMessage(),
+        Assert.assertEquals(changePasswordPage.getChangePasswordSuccessMsg(),
                 "Your password has been updated!",
                 "Change password success message doesn't display as expected");
     }

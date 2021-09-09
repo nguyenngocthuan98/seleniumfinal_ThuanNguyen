@@ -13,13 +13,12 @@ import org.testng.annotations.Parameters;
 public class BaseTests {
     @BeforeMethod
     @Parameters("Browser")
-    public void beforeMethod(@Optional("chrome.local") String browser) throws Exception {
+    public void beforeMethod(@Optional("firefox.local") String browser) throws Exception {
         LogHelper.logInfo("Before method");
         DriverProperty driverProperty = BrowserSettingHelper.getDriverProperty(Constants.BROWSER_SETTING_FILE, browser);
         DriverUtils.getDriver(driverProperty);
         DriverUtils.setTimeOut(Constants.TIME_WAIT);
         DriverUtils.navigate(Constants.BASE_URL);
-        Constants.WEBDRIVER = DriverUtils.getWebDriver();
     }
 
     @AfterMethod

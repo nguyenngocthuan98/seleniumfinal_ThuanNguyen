@@ -7,40 +7,40 @@ import entities.Account;
 
 public class LoginPage extends BasePage {
     //Locators
-    private final TextBox emailField = new TextBox("id=username");
-    private final TextBox passwordField = new TextBox("id=password");
-    private final Button loginButton = new Button("css=p.form-actions input[type='submit']");
-    private final Label loginFormErrorMsg = new Label("css=p[class='message error LoginForm']");
-    private final Label emailErrorMsg = new Label("css=li.username label.validation-error");
+    private final TextBox txtEmail = new TextBox("id=username");
+    private final TextBox txtPassword = new TextBox("id=password");
+    private final Button btnLogin = new Button("css=p.form-actions input[type='submit']");
+    private final Label lblLoginFormErrorMsg = new Label("css=p[class='message error LoginForm']");
+    private final Label lblEmailErrorMsg = new Label("css=li.username label.validation-error");
 
     //Methods
     public String getLoginFormErrorMessage() {
-        return loginFormErrorMsg.getText();
+        return lblLoginFormErrorMsg.getText();
     }
 
     public String getEmailErrorMessage() {
-        return emailErrorMsg.getText();
+        return lblEmailErrorMsg.getText();
     }
 
     public void login(Account account) {
-        emailField.scrollToView();
-        emailField.clear();
-        emailField.enter(account.getEmail());
-        passwordField.clear();
-        passwordField.enter(account.getPassword());
-        loginButton.click();
+        txtEmail.scrollToView();
+        txtEmail.clear();
+        txtEmail.enter(account.getEmail());
+        txtPassword.clear();
+        txtPassword.enter(account.getPassword());
+        btnLogin.click();
     }
 
     public void loginSeveralTimes(Account account, int timesNumber) {
-        emailField.scrollToView();
-        emailField.clear();
-        emailField.enter(account.getEmail());
+        txtEmail.scrollToView();
+        txtEmail.clear();
+        txtEmail.enter(account.getEmail());
         for (int i = 1; i <= timesNumber; i++) {
-            passwordField.waitForDisplay();
-            passwordField.scrollToView();
-            passwordField.clear();
-            passwordField.enter(account.getPassword());
-            loginButton.click();
+            txtPassword.waitForDisplay();
+            txtPassword.scrollToView();
+            txtPassword.clear();
+            txtPassword.enter(account.getPassword());
+            btnLogin.click();
         }
     }
 }

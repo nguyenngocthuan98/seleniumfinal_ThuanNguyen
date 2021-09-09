@@ -10,52 +10,52 @@ public class BookTicketPage extends BasePage {
             "//table[@class='MyTable WideTable']/tbody/tr/td[count(//th)-count(//th[text()='%s']/following-sibling::th)]";
 
     //Locators
-    private final Button bookTicketButton = new Button("css=input[type='submit']");
-    private final ComboBox departFromDropdown = new ComboBox("css=select[name='DepartStation']");
-    private final ComboBox departDateDropdown = new ComboBox("css=select[name='Date']");
-    private final ComboBox arriveAtDropdown = new ComboBox("css=select[name='ArriveStation']");
-    private final ComboBox seatTypeDropdown = new ComboBox("css=select[name='SeatType']");
-    private final ComboBox ticketAmountDropdown = new ComboBox("css=select[name='TicketAmount']");
-    private final Label pageTitle = new Label("css=div#content h1[align='center']");
-    private final Label departFromValue = new Label(valuesByColumnDynamic, "Depart Station");
-    private final Label arriveAtValue = new Label(valuesByColumnDynamic, "Arrive Station");
-    private final Label seatTypeValue = new Label(valuesByColumnDynamic, "Seat Type");
-    private final Label departDateValue = new Label(valuesByColumnDynamic, "Depart Date");
-    private final Label amountValue = new Label(valuesByColumnDynamic, "Amount");
+    private final Button btnBookTicket = new Button("css=input[type='submit']");
+    private final ComboBox cbbDepartFrom = new ComboBox("css=select[name='DepartStation']");
+    private final ComboBox cbbDepartDate = new ComboBox("css=select[name='Date']");
+    private final ComboBox cbbArriveAt = new ComboBox("css=select[name='ArriveStation']");
+    private final ComboBox cbbSeatType = new ComboBox("css=select[name='SeatType']");
+    private final ComboBox cbbTicketAmount = new ComboBox("css=select[name='TicketAmount']");
+    private final Label lblPageTitle = new Label("css=div#content h1[align='center']");
+    private final Label lblDepartFromValue = new Label(valuesByColumnDynamic, "Depart Station");
+    private final Label lblArriveAtValue = new Label(valuesByColumnDynamic, "Arrive Station");
+    private final Label lblSeatTypeValue = new Label(valuesByColumnDynamic, "Seat Type");
+    private final Label lblDepartDateValue = new Label(valuesByColumnDynamic, "Depart Date");
+    private final Label lblAmountValue = new Label(valuesByColumnDynamic, "Amount");
 
     //Methods
     public String getPageTitle() {
-        return pageTitle.getText();
+        return lblPageTitle.getText();
     }
 
     public String getDepartFromValue() {
-        return departFromValue.getText();
+        return lblDepartFromValue.getText();
     }
 
     public String getArriveAtValue() {
-        return arriveAtValue.getText();
+        return lblArriveAtValue.getText();
     }
 
     public String getSeatTypeValue() {
-        return seatTypeValue.getText();
+        return lblSeatTypeValue.getText();
     }
 
     public String getTicketAmountValue() {
-        return amountValue.getText();
+        return lblAmountValue.getText();
     }
 
     public String getDepartDateValue() {
-        return departDateValue.getText();
+        return lblDepartDateValue.getText();
     }
 
     public void bookTicket(Ticket ticket) {
-        departDateDropdown.waitForDisplay();
-        departDateDropdown.scrollToView();
-        departDateDropdown.select(ticket.getDepartDate());
-        departFromDropdown.select(ticket.getDepartFrom());
-        arriveAtDropdown.select(ticket.getArriveAt());
-        seatTypeDropdown.select(ticket.getSeatType());
-        ticketAmountDropdown.select(ticket.getAmounts());
-        bookTicketButton.click();
+        cbbDepartDate.waitForDisplay();
+        cbbDepartDate.scrollToView();
+        cbbDepartDate.select(ticket.getDepartDate());
+        cbbDepartFrom.select(ticket.getDepartFrom());
+        cbbArriveAt.select(ticket.getArriveAt());
+        cbbSeatType.select(ticket.getSeatType());
+        cbbTicketAmount.select(ticket.getAmounts());
+        btnBookTicket.click();
     }
 }
