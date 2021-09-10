@@ -1,52 +1,29 @@
 package pages;
 
+import com.logigear.control.common.imp.Button;
+import com.logigear.control.common.imp.Label;
+import com.logigear.control.common.imp.TextBox;
 import entities.Account;
-import helpers.Constants;
-import helpers.ElementHelper;
-import helpers.Wait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class ChangePasswordPage extends BasePage {
     //Locates
-    private final By currentPasswordField = By.id("currentPassword");
-    private final By newPasswordField = By.id("newPassword");
-    private final By confirmPasswordField = By.id("confirmPassword");
-    private final By changePasswordButton = By.cssSelector("input[type='submit']");
-    private final By changePasswordSuccessMsg = By.cssSelector("p.message");
-
-    //Element
-    private WebElement currentPasswordFieldElement() {
-        return Constants.WEBDRIVER.findElement(currentPasswordField);
-    }
-
-    private WebElement newPasswordFieldElement() {
-        return Constants.WEBDRIVER.findElement(newPasswordField);
-    }
-
-    private WebElement confirmPasswordFieldElement() {
-        return Constants.WEBDRIVER.findElement(confirmPasswordField);
-    }
-
-    private WebElement changePasswordButtonElement() {
-        return Constants.WEBDRIVER.findElement(changePasswordButton);
-    }
-
-    private WebElement changePasswordSuccessMsgElement() {
-        return Constants.WEBDRIVER.findElement(changePasswordSuccessMsg);
-    }
+    private final TextBox txtCurrentPassword = new TextBox("id=currentPassword");
+    private final TextBox txtNewPassword = new TextBox("id=newPassword");
+    private final TextBox txtConfirmPassword = new TextBox("id=confirmPassword");
+    private final Button btnChangePassword = new Button("css=input[type='submit']");
+    private final Label lblChangePasswordSuccessMsg = new Label("css=p.message");
 
     //Methods
-    public String getChangePasswordSuccessMessage() {
-        Wait.untilElementVisible(changePasswordSuccessMsg, Constants.TIME_WAIT);
-        return changePasswordSuccessMsgElement().getText();
+    public String getChangePasswordSuccessMsg() {
+        lblChangePasswordSuccessMsg.waitForDisplay();
+        return lblChangePasswordSuccessMsg.getText();
     }
 
     public void changePassword(Account account, String newPassword) {
-        ElementHelper.scrollTo(currentPasswordFieldElement());
-        currentPasswordFieldElement().sendKeys(account.getPassword());
-        newPasswordFieldElement().sendKeys(newPassword);
-        confirmPasswordFieldElement().sendKeys(newPassword);
-        changePasswordButtonElement().click();
+        txtCurrentPassword.scrollToView();
+        txtCurrentPassword.enter(account.getPassword());
+        txtNewPassword.enter(newPassword);
+        txtConfirmPassword.enter(newPassword);
+        btnChangePassword.click();
     }
 }

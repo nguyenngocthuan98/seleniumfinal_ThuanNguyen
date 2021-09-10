@@ -38,7 +38,7 @@ public class BookTicketTests extends BaseTests {
         bookTicketPage.goToBookTicketPage();
 
         LogHelper.logInfo("Check login page name");
-        Assert.assertEquals(loginPage.getPageNameLabel(), "Login Page",
+        Assert.assertEquals(loginPage.getPageName(), "Login Page",
                 "Login page name doesn't display as expected.");
     }
 

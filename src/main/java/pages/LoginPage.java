@@ -1,69 +1,46 @@
 package pages;
 
+import com.logigear.control.common.imp.Button;
+import com.logigear.control.common.imp.Label;
+import com.logigear.control.common.imp.TextBox;
 import entities.Account;
-import helpers.Constants;
-import helpers.ElementHelper;
-import helpers.Wait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
     //Locators
-    private final By emailField = By.id("username");
-    private final By passwordField = By.id("password");
-    private final By loginButton = By.cssSelector("p.form-actions input[type='submit']");
-    private final By loginFormErrorMsg = By.cssSelector("p[class='message error LoginForm']");
-    private final By emailErrorMsg = By.cssSelector("li.username label.validation-error");
-
-    //Elements
-    private WebElement emailFieldElement() {
-        return Constants.WEBDRIVER.findElement(emailField);
-    }
-
-    private WebElement passwordFieldElement() {
-        return Constants.WEBDRIVER.findElement(passwordField);
-    }
-
-    private WebElement loginButtonElement() {
-        return Constants.WEBDRIVER.findElement(loginButton);
-    }
-
-    private WebElement loginFormErrorMsgElement() {
-        return Constants.WEBDRIVER.findElement(loginFormErrorMsg);
-    }
-
-    private WebElement emailErrorMsgElement() {
-        return Constants.WEBDRIVER.findElement(emailErrorMsg);
-    }
+    private final TextBox txtEmail = new TextBox("id=username");
+    private final TextBox txtPassword = new TextBox("id=password");
+    private final Button btnLogin = new Button("css=p.form-actions input[type='submit']");
+    private final Label lblLoginFormErrorMsg = new Label("css=p[class='message error LoginForm']");
+    private final Label lblEmailErrorMsg = new Label("css=li.username label.validation-error");
 
     //Methods
     public String getLoginFormErrorMessage() {
-        return loginFormErrorMsgElement().getText();
+        return lblLoginFormErrorMsg.getText();
     }
 
     public String getEmailErrorMessage() {
-        return emailErrorMsgElement().getText();
+        return lblEmailErrorMsg.getText();
     }
 
     public void login(Account account) {
-        ElementHelper.scrollTo(emailFieldElement());
-        emailFieldElement().clear();
-        emailFieldElement().sendKeys(account.getEmail());
-        passwordFieldElement().clear();
-        passwordFieldElement().sendKeys(account.getPassword());
-        loginButtonElement().click();
+        txtEmail.scrollToView();
+        txtEmail.clear();
+        txtEmail.enter(account.getEmail());
+        txtPassword.clear();
+        txtPassword.enter(account.getPassword());
+        btnLogin.click();
     }
 
     public void loginSeveralTimes(Account account, int timesNumber) {
-        ElementHelper.scrollTo(emailFieldElement());
-        emailFieldElement().clear();
-        emailFieldElement().sendKeys(account.getEmail());
+        txtEmail.scrollToView();
+        txtEmail.clear();
+        txtEmail.enter(account.getEmail());
         for (int i = 1; i <= timesNumber; i++) {
-            Wait.untilElementVisible(passwordField, Constants.TIME_WAIT);
-            ElementHelper.scrollTo(passwordFieldElement());
-            passwordFieldElement().clear();
-            passwordFieldElement().sendKeys(account.getPassword());
-            loginButtonElement().click();
+            txtPassword.waitForDisplay();
+            txtPassword.scrollToView();
+            txtPassword.clear();
+            txtPassword.enter(account.getPassword());
+            btnLogin.click();
         }
     }
 }

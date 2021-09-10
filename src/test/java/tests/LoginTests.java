@@ -100,14 +100,14 @@ public class LoginTests extends BaseTests {
         loginPage.goToMyTicketPage();
 
         LogHelper.logInfo("Check My ticket page name");
-        Assert.assertEquals(loginPage.getPageNameLabel(), "Manage Tickets",
+        Assert.assertEquals(loginPage.getPageName(), "Manage Tickets",
                 "My Ticket page name doesn't display as expected.");
 
         LogHelper.logInfo("Go to Change password page");
         loginPage.goToChangePasswordPage();
 
         LogHelper.logInfo("Check Change password page name");
-        Assert.assertEquals(loginPage.getPageNameLabel(), "Change password",
+        Assert.assertEquals(loginPage.getPageName(), "Change password",
                 "Change password page name doesn't display as expected.");
     }
 }

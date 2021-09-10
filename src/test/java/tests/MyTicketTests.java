@@ -35,7 +35,7 @@ public class MyTicketTests extends BaseTests {
     }
 
     @Test(testName = "User can cancel a ticket")
-    public void tc16_CancelTicketTest() {
+    public void tc16_CancelTicketTest() throws InterruptedException {
         String departDay = DateTimeHelper.getDateFromToday(16);
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";

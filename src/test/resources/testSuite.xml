@@ -2,6 +2,18 @@
 
 <suite name="test-suite">
     <test name="Test in Chrome">
+        <parameter name="Browser" value="chrome.local"/>
+        <classes>
+            <class name="tests.LoginTests"/>
+            <class name="tests.BookTicketTests"/>
+            <class name="tests.RegisterTests"/>
+            <class name="tests.ChangePasswordTests"/>
+            <class name="tests.MyTicketTests"/>
+        </classes>
+    </test>
+
+    <test name="Test in Firefox">
+        <parameter name="Browser" value="firefox.local"/>
         <classes>
             <class name="tests.LoginTests"/>
             <class name="tests.BookTicketTests"/>
@@ -11,4 +23,3 @@
         </classes>
     </test>
 </suite>
-

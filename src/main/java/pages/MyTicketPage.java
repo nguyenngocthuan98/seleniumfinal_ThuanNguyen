@@ -1,12 +1,10 @@
 package pages;
 
+import com.logigear.control.common.imp.Button;
+import com.logigear.control.common.imp.Label;
+import com.logigear.driver.DriverUtils;
 import entities.Ticket;
 import helpers.Constants;
-import helpers.DriverHelper;
-import helpers.ElementHelper;
-import helpers.Wait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class MyTicketPage extends BasePage {
     String cancelButtonDynamic = "//tr//td[text()='%s']" +
@@ -21,34 +19,33 @@ public class MyTicketPage extends BasePage {
             "//following::td[text()='%s']" +
             "//following::td[text()='%s']";
 
-    //Elements
-    private WebElement cancelButtonElement(Ticket ticket) {
-        By cancelButton = By.xpath(String.format(cancelButtonDynamic,
+    private Button btnCancel(Ticket ticket) {
+        return new Button(cancelButtonDynamic,
                 ticket.getDepartFrom(),
                 ticket.getArriveAt(),
                 ticket.getSeatType(),
                 ticket.getDepartDate(),
-                ticket.getAmounts())
-        );
-        return Constants.WEBDRIVER.findElement(cancelButton);
+                ticket.getAmounts());
+    }
+
+    private Label lblTicketInfo(Ticket ticket) {
+        return new Label(ticketDynamic,
+                ticket.getDepartFrom(),
+                ticket.getArriveAt(),
+                ticket.getSeatType(),
+                ticket.getDepartDate(),
+                ticket.getAmounts());
     }
 
     //Methods
     public boolean doesTicketExist(Ticket ticket) {
-        By ticketInformation = By.xpath(String.format(ticketDynamic,
-                ticket.getDepartFrom(),
-                ticket.getArriveAt(),
-                ticket.getSeatType(),
-                ticket.getDepartDate(),
-                ticket.getAmounts())
-        );
-        return !Constants.WEBDRIVER.findElements(ticketInformation).isEmpty();
+        lblTicketInfo(ticket).waitForDisappear(Constants.SHORT_WAITING_TIME);
+        return lblTicketInfo(ticket).isExist(Constants.SHORT_WAITING_TIME);
     }
 
     public void cancelTicket(Ticket ticket) {
-        ElementHelper.scrollTo(cancelButtonElement(ticket));
-        cancelButtonElement(ticket).click();
-        Wait.untilAlertPopupDisplays(Constants.QUICK_TIME);
-        DriverHelper.acceptAlert();
+        btnCancel(ticket).scrollToView();
+        btnCancel(ticket).click();
+        DriverUtils.acceptAlert();
     }
 }
