@@ -35,7 +35,7 @@ public class MyTicketTests extends BaseTests {
     }
 
     @Test(testName = "User can cancel a ticket")
-    public void tc16_CancelTicketTest() {
+    public void tc16_CancelTicketTest() throws InterruptedException {
         String departDay = DateTimeHelper.getDateFromToday(16);
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
@@ -63,6 +63,6 @@ public class MyTicketTests extends BaseTests {
         myTicketPage.cancelTicket(ticket);
 
         LogHelper.logInfo("Check ticket canceled successfully.");
-        Assert.assertFalse(myTicketPage.waitForDisappearance(ticket), "Ticket still exist after cancel ticket");
+        Assert.assertFalse(myTicketPage.doesTicketExist(ticket), "Ticket still exist after cancel ticket");
     }
 }

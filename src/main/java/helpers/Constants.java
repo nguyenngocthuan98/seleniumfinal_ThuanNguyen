@@ -8,6 +8,6 @@ public class Constants {
 
     public final static String EMAIL = "test@railway.com";
     public final static String PASSWORD = "validPassword";
-    public final static int TIME_WAIT = 30;
-    public final static int SHORT_TIME = 3;
+    public final static int LONG_WAITING_TIME = 30;
+    public final static int SHORT_WAITING_TIME = 3;
 }

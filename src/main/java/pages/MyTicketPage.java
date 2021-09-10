@@ -39,12 +39,8 @@ public class MyTicketPage extends BasePage {
 
     //Methods
     public boolean doesTicketExist(Ticket ticket) {
-        return lblTicketInfo(ticket).isExist(Constants.SHORT_TIME);
-    }
-
-    public boolean waitForDisappearance(Ticket ticket) {
-        lblTicketInfo(ticket).waitForDisappear(Constants.SHORT_TIME);
-        return lblTicketInfo(ticket).isExist(Constants.SHORT_TIME);
+        lblTicketInfo(ticket).waitForDisappear(Constants.SHORT_WAITING_TIME);
+        return lblTicketInfo(ticket).isExist(Constants.SHORT_WAITING_TIME);
     }
 
     public void cancelTicket(Ticket ticket) {

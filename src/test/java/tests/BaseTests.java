@@ -17,7 +17,7 @@ public class BaseTests {
         LogHelper.logInfo("Before method");
         DriverProperty driverProperty = BrowserSettingHelper.getDriverProperty(Constants.BROWSER_SETTING_FILE, browser);
         DriverUtils.getDriver(driverProperty);
-        DriverUtils.setTimeOut(Constants.TIME_WAIT);
+        DriverUtils.setTimeOut(Constants.LONG_WAITING_TIME);
         DriverUtils.navigate(Constants.BASE_URL);
     }
 
