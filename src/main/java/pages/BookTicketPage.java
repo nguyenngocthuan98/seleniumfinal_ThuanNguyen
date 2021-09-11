@@ -48,6 +48,14 @@ public class BookTicketPage extends BasePage {
         return lblDepartDateValue.getText();
     }
 
+    public String getDepartStationSelectedValue() {
+        return new ComboBox("xpath=//select[@name='DepartStation']/option[@selected='selected']").getText();
+    }
+
+    public String getArriveStationSelectedValue() {
+        return new ComboBox("xpath=//select[@name='ArriveStation']/option[@selected='selected']").getText();
+    }
+
     public void bookTicket(Ticket ticket) {
         cbbDepartDate.waitForDisplay();
         cbbDepartDate.scrollToView();

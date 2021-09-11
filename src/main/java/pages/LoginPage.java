@@ -2,6 +2,7 @@ package pages;
 
 import com.logigear.control.common.imp.Button;
 import com.logigear.control.common.imp.Label;
+import com.logigear.control.common.imp.Link;
 import com.logigear.control.common.imp.TextBox;
 import entities.Account;
 
@@ -12,6 +13,7 @@ public class LoginPage extends BasePage {
     private final Button btnLogin = new Button("css=p.form-actions input[type='submit']");
     private final Label lblLoginFormErrorMsg = new Label("css=p[class='message error LoginForm']");
     private final Label lblEmailErrorMsg = new Label("css=li.username label.validation-error");
+    private final Link lnkForgotPasswordPage = new Link("css=li a[href='/Account/ForgotPassword.cshtml']");
 
     //Methods
     public String getLoginFormErrorMessage() {
@@ -20,6 +22,10 @@ public class LoginPage extends BasePage {
 
     public String getEmailErrorMessage() {
         return lblEmailErrorMsg.getText();
+    }
+
+    public void goToForgotPasswordPage() {
+        lnkForgotPasswordPage.click();
     }
 
     public void login(Account account) {

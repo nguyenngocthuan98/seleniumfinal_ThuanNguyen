@@ -14,6 +14,7 @@ public class BasePage {
     private final Link lnkMyTicketTab = new Link("css=li a[href='/Page/ManageTicket.cshtml']");
     private final Link lnkLogoutTab = new Link("css=li a[href='/Account/Logout']");
     private final Link lnkRegisterTab = new Link("css=li a[href='/Account/Register.cshtml']");
+    private final Link lnkTimeTableTab = new Link("css=li a[href='TrainTimeListPage.cshtml']");
 
     //Methods
     public String getGreetingMsg() {
@@ -45,6 +46,10 @@ public class BasePage {
 
     public void goToMyTicketPage() {
         lnkMyTicketTab.click();
+    }
+
+    public void goToTimeTablePage() {
+        lnkTimeTableTab.click();
     }
 
     public boolean doesMyTicketTabDisplay() {

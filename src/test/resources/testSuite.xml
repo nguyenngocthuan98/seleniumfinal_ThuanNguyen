@@ -9,6 +9,8 @@
             <class name="tests.RegisterTests"/>
             <class name="tests.ChangePasswordTests"/>
             <class name="tests.MyTicketTests"/>
+            <class name="tests.ForgotPasswordTests"/>
+            <class name="tests.TimeTableTests"/>
         </classes>
     </test>
 
@@ -20,6 +22,8 @@
             <class name="tests.RegisterTests"/>
             <class name="tests.ChangePasswordTests"/>
             <class name="tests.MyTicketTests"/>
+            <class name="tests.ForgotPasswordTests"/>
+            <class name="tests.TimeTableTests"/>
         </classes>
     </test>
 </suite>
